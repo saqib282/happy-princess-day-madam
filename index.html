@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Princess Day – For Madaam Sahaibaa 👑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Caveat:wght@500;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night1:#1a1252; --night2:#4b2a9a; --night3:#a23fb4; --rose:#ff5fa8; --rose-d:#d9247f;
+  --gold:#ffd36b; --cream:#fff8e6; --blush:#ffd6ec; --ink:#4a1d3f;
+  --script:'Dancing Script','Brush Script MT',cursive;
+  --hand:'Caveat','Comic Sans MS',cursive;
+  --body:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--body);color:#fff;overflow:hidden;background:var(--night1);transition:background .8s}
+body.dark{background:linear-gradient(180deg,#1b1259 0%,#4a2a9c 55%,#c04fb8 100%)}
+body.pink{background:linear-gradient(180deg,#f7b6dd 0%,#fbd3ea 60%,#ffe4f2 100%);color:var(--ink)}
+body.deep{background:linear-gradient(180deg,#160d4a 0%,#3d2390 55%,#b3499f 100%)}
+#sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fl{position:absolute;bottom:-30px;opacity:0;animation:rise linear forwards;user-select:none}
+@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-110vh) rotate(40deg);opacity:0}}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.2;transform:scale(.6)}}
+.screen{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  padding:max(22px,env(safe-area-inset-top)) 20px max(26px,env(safe-area-inset-bottom));overflow-y:auto;z-index:1;text-align:center}
+.screen.active{display:flex;animation:fin .7s ease}
+@keyframes fin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.wrap{width:100%;max-width:420px;margin:auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+h1,h2{font-family:var(--script);font-weight:700;line-height:1.15}
+h1{font-size:2.15rem;color:#fff;text-shadow:0 2px 12px rgba(255,95,168,.6)}
+h2{font-size:2rem}
+.gold{color:var(--gold);text-shadow:0 2px 10px rgba(0,0,0,.35)}
+.plum{color:#7a1f5c}
+.btn{font-family:var(--body);font-weight:800;font-size:1rem;color:#fff;border:2px solid #ffd9a0;border-radius:999px;padding:14px 26px;
+  background:linear-gradient(135deg,#ff7bb6,#d9247f);box-shadow:0 8px 22px rgba(217,36,127,.45),inset 0 1px 0 rgba(255,255,255,.4);cursor:pointer;transition:transform .15s,filter .2s}
+.btn:active{transform:scale(.96)}
+.btn[disabled]{filter:grayscale(.5) brightness(.8);cursor:not-allowed}
+.hint{font-size:.78rem;opacity:.8}
+.ghost{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.4);box-shadow:none}
+
+/* 1 envelope */
+.env{width:190px;height:130px;position:relative;cursor:pointer;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 12px 20px rgba(0,0,0,.35))}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-1deg)}}
+.env .back{position:absolute;inset:0;background:#e86fe0;border-radius:10px}
+.env .flap{position:absolute;left:0;right:0;top:0;height:70px;background:#f59bf0;clip-path:polygon(0 0,100% 0,50% 100%);border-radius:10px 10px 0 0;transform-origin:top;transition:transform .8s}
+.env .front{position:absolute;inset:0;background:linear-gradient(135deg,#ff9cf3,#d65be0);clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);border-radius:10px}
+.env .seal{position:absolute;left:50%;top:44px;transform:translateX(-50%);width:38px;height:38px;border-radius:50%;background:radial-gradient(#ffe29a,#e7a93c);display:grid;place-items:center;color:#d9247f;z-index:3;box-shadow:0 2px 6px rgba(0,0,0,.3);transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg)}
+.env.open .seal{opacity:0}
+.env.open{animation:none;transform:scale(1.1)}
+
+/* 2 invitation */
+.card{background:var(--cream);color:#6b3a3a;border:3px solid #f3d38a;border-radius:24px;padding:22px 20px;box-shadow:0 0 0 4px rgba(255,211,107,.3),0 18px 40px rgba(0,0,0,.35);width:100%}
+.card .tag{font-size:.65rem;letter-spacing:.2em;color:#b8741f;font-weight:800;margin:4px 0 10px}
+.card p{font-family:var(--script);font-size:1.35rem;line-height:1.45;font-weight:600}
+.orb{width:34px;height:34px;border-radius:50%;margin:12px auto 0;background:radial-gradient(#ff7bb6,#d9247f);display:grid;place-items:center;font-size:.9rem;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,95,168,.2)}}
+
+/* 3 welcome */
+.glass{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);border-radius:20px;padding:16px;font-size:.95rem;line-height:1.5;backdrop-filter:blur(6px);text-align:left}
+.chips{display:flex;gap:8px;width:100%}
+.chip{flex:1;background:#fff;color:#8c2f6d;border-radius:14px;padding:10px 6px;font-weight:800;font-size:.8rem;box-shadow:0 6px 14px rgba(0,0,0,.2)}
+
+/* 4 letter */
+.frame{width:100%;background:linear-gradient(135deg,#e0558f,#c93a7d);border-radius:22px;padding:14px 14px 30px;position:relative;box-shadow:0 14px 28px rgba(150,30,90,.4);cursor:pointer}
+.frame:after{content:"";position:absolute;left:18px;right:18px;bottom:11px;height:8px;background:radial-gradient(circle,#fff 2.5px,transparent 3px) 0 0/16px 8px repeat-x}
+.frame .crown{position:absolute;right:-6px;top:-18px;font-size:1.6rem}
+.paper{background:var(--cream);color:#2d2230;border-radius:12px;padding:16px;text-align:left;font-family:var(--hand);font-size:1.18rem;line-height:1.45;min-height:260px;box-shadow:inset 0 0 18px rgba(0,0,0,.12)}
+.paper p{margin-bottom:10px;font-weight:700}
+.caret{display:inline-block;width:2px;height:1em;background:#2d2230;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* 5 cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.tile{perspective:700px;aspect-ratio:3/4;cursor:pointer}
+.tile .in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.tile.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:8px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px solid #ffe3a6;box-shadow:0 8px 16px rgba(0,0,0,.3)}
+.front{background:linear-gradient(160deg,#ffc3e6,#ff8cc6);color:#a01a68}
+.front b{font-family:var(--script);font-size:1.1rem;line-height:1.05}
+.front small{font-size:.58rem;opacity:.85}
+.front i{font-style:normal;font-size:.6rem;font-weight:800;align-self:flex-start;color:#b2691b}
+.back{background:var(--cream);color:#7b4a4a;transform:rotateY(180deg)}
+.back strong{font-size:.58rem;letter-spacing:.1em;color:#c24c8b}
+.back span{font-size:.68rem;line-height:1.25;font-weight:700}
+.count{background:rgba(255,255,255,.14);border-radius:999px;padding:6px 14px;font-size:.78rem;font-weight:700}
+
+/* 6 gift */
+.gift{width:190px;height:170px;position:relative;cursor:pointer;margin:8px 0}
+.gift .box{position:absolute;bottom:0;left:15px;right:15px;height:105px;background:linear-gradient(#ff9ccb,#f06aa8);border-radius:10px;box-shadow:0 12px 20px rgba(150,30,90,.35)}
+.gift .lid{position:absolute;bottom:92px;left:5px;right:5px;height:34px;background:#f27ab3;border-radius:8px;transition:transform .7s}
+.gift .rib{position:absolute;bottom:0;left:50%;width:26px;height:126px;margin-left:-13px;background:linear-gradient(90deg,#f2b73c,#ffd36b,#f2b73c)}
+.gift .bow{position:absolute;bottom:118px;left:50%;transform:translateX(-50%);font-size:2.2rem;transition:transform .7s}
+.gift .heart{position:absolute;bottom:42px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:#ff5fa8;display:grid;place-items:center;border:2px solid #ffd36b;z-index:2}
+.gift.shake{animation:shake .5s 2}
+@keyframes shake{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+.gift.open .lid,.gift.open .bow{transform:translate(-50%,-70px) rotate(-12deg)}
+.gift.open .lid{transform:translateY(-70px) rotate(-12deg)}
+.balloon{position:absolute;width:34px;height:42px;border-radius:50% 50% 48% 48%;animation:float 4s ease-in-out infinite}
+.balloon:after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:42px;background:rgba(0,0,0,.3)}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+/* 7 list */
+.row{display:flex;gap:12px;align-items:center;text-align:left;background:#fff;border-radius:16px;padding:10px 12px;width:100%;box-shadow:0 8px 16px rgba(150,30,90,.18);color:#4a1d3f}
+.row .ic{width:42px;height:42px;border-radius:12px;background:#ffd1e6;display:grid;place-items:center;font-size:1.3rem;flex:none}
+.row b{font-family:var(--script);font-size:1.15rem;color:#a01a68;display:block}
+.row span{font-size:.8rem;line-height:1.3}
+.note{background:var(--cream);border-radius:14px;padding:14px;width:100%;text-align:left;font-family:var(--hand);font-size:1.15rem;line-height:1.4;color:#2d2230;box-shadow:0 10px 20px rgba(150,30,90,.25)}
+.note b{font-family:var(--script);font-size:1.25rem;color:#a01a68;display:block}
+
+/* 8 promise */
+.prom{display:flex;flex-direction:column;gap:10px;width:100%}
+.p{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.3);border-radius:14px;padding:12px;font-weight:800;text-align:left;cursor:pointer;color:#fff;font-family:var(--body);font-size:.95rem;transition:.3s}
+.p .n{width:26px;height:26px;border-radius:50%;background:var(--gold);color:#7a3d00;display:grid;place-items:center;font-size:.8rem;flex:none}
+.p.on{background:linear-gradient(135deg,#ff7bb6,#d9247f);border-color:#ffd9a0}
+
+/* 9 final */
+.final .msg{font-family:var(--script);font-size:1.7rem;font-weight:700;color:#fff;text-shadow:0 2px 14px rgba(255,150,220,.8);line-height:1.3;max-width:320px}
+.sig{font-family:var(--script);font-size:1.15rem;color:var(--gold)}
+svg{max-width:100%;height:auto}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="dark">
+<div id="sky"></div>
+
+<!-- 1 ENVELOPE -->
+<section class="screen active" id="s1" data-theme="dark">
+  <div class="wrap">
+    <svg width="230" height="190" viewBox="0 0 230 190" aria-hidden="true">
+      <circle cx="195" cy="28" r="12" fill="#f2e9ff"/><circle cx="201" cy="24" r="11" fill="#2a1a7a"/>
+      <g fill="#b99cf0"><rect x="30" y="90" width="170" height="80"/><rect x="92" y="60" width="46" height="110" fill="#c9b0f5"/></g>
+      <g fill="#6f6bdc"><polygon points="20,92 50,38 70,92"/><polygon points="160,92 180,38 210,92"/><polygon points="85,64 115,6 145,64"/></g>
+      <g fill="#ff7bb6"><rect x="113" y="0" width="2" height="8"/><polygon points="115,0 128,4 115,8"/></g>
+      <rect x="104" y="30" width="22" height="26" rx="11" fill="#2a1a7a"/>
+      <circle cx="115" cy="42" r="5" fill="#ffd36b" opacity=".7"/>
+      <g fill="#ffd96b"><ellipse cx="50" cy="115" rx="6" ry="9"/><ellipse cx="180" cy="115" rx="6" ry="9"/><ellipse cx="72" cy="140" rx="5" ry="8"/><ellipse cx="158" cy="140" rx="5" ry="8"/></g>
+      <path d="M100 170v-32a15 15 0 0 1 30 0v32z" fill="#6a3fb5"/>
+    </svg>
+    <div class="env" id="env" role="button" aria-label="Open the envelope" tabindex="0">
+      <div class="back"></div><div class="flap"></div><div class="front"></div><div class="seal">💗</div>
+    </div>
+    <p class="hint">Tap the envelope to open ✨</p>
+  </div>
+</section>
+
+<!-- 2 INVITATION -->
+<section class="screen" id="s2" data-theme="dark">
+  <div class="wrap">
+    <div class="card">
+      <div style="font-size:1.6rem">👑</div>
+      <div class="tag">BY ROYAL INVITATION</div>
+      <p>By royal invitation, you are requested to enter a little world made especially for you. Your presence makes everything more magical.</p>
+      <div class="orb">💗</div>
+    </div>
+    <button class="btn" data-next>Step Into Your Kingdom ✨</button>
+  </div>
+</section>
+
+<!-- 3 WELCOME -->
+<section class="screen" id="s3" data-theme="dark">
+  <div class="wrap">
+    <svg width="220" height="150" viewBox="0 0 220 150" aria-hidden="true">
+      <path d="M0 110 Q60 90 110 105 T220 95 V150 H0Z" fill="#ff8fc9"/>
+      <g fill="#c9b0f5"><rect x="80" y="30" width="60" height="45"/></g>
+      <g fill="#8a7be8"><polygon points="76,32 90,8 104,32"/><polygon points="116,32 130,8 144,32"/></g>
+      <g stroke="#ffd36b" stroke-width="1.5"><line x1="30" y1="0" x2="30" y2="30"/><line x1="190" y1="0" x2="190" y2="24"/></g>
+      <circle cx="30" cy="34" r="5" fill="#ffd36b"/><circle cx="190" cy="28" r="5" fill="#ffd36b"/>
+      <ellipse cx="38" cy="108" rx="30" ry="18" fill="#1d8a5a"/><ellipse cx="182" cy="108" rx="30" ry="18" fill="#1d8a5a"/>
+      <g fill="#ff4f86"><circle cx="28" cy="104" r="4"/><circle cx="44" cy="110" r="4"/><circle cx="174" cy="104" r="4"/><circle cx="190" cy="111" r="4"/></g>
+      <polygon points="95,128 110,78 125,128" fill="#ff7bb6"/>
+      <circle cx="110" cy="68" r="11" fill="#ffd9c4"/><path d="M99 66a11 11 0 0 1 22 0v-4a11 11 0 0 0-22 0z" fill="#5a2a1e"/>
+      <polygon points="102,57 106,50 110,56 114,50 118,57" fill="#ffd36b"/>
+    </svg>
+    <h1>Welcome to Your Little Kingdom, Princess <span data-her>Madaam Sahaibaa</span> 💗</h1>
+    <div class="glass">If I could create a whole kingdom for someone, I'd make it for you. A place where your smile lights up every corner, your happiness matters more than anything, and every little moment feels like a fairytale.</div>
+    <div class="chips"><div class="chip">Your Smile = My Sunshine ☀️</div><div class="chip">Your Happiness = My Wish 💫</div><div class="chip">Your Presence = My Magic ✨</div></div>
+    <button class="btn" data-next>Take Me to the Next Surprise 💗</button>
+  </div>
+</section>
+
+<!-- 4 LETTER -->
+<section class="screen" id="s4" data-theme="pink">
+  <div class="wrap">
+    <h2 class="plum">A Little Letter from Your Biggest Admirer 💌</h2>
+    <div class="frame" id="frame"><span class="crown">👑</span><div class="paper" id="paper"></div></div>
+    <p class="hint">Tap the letter to reveal it all ✨</p>
+    <button class="btn" id="moreBtn" data-next style="display:none">There's More, My Princess... 💗</button>
+  </div>
+</section>
+
+<!-- 5 CARDS -->
+<section class="screen" id="s5" data-theme="deep">
+  <div class="wrap">
+    <h2 class="gold">Do You Know Why You're So Special? 🌼</h2>
+    <p class="hint">Tap each royal card to reveal its little secret ✨</p>
+    <div class="grid" id="grid"></div>
+    <div class="count" id="count">0 of 6 royal secrets revealed</div>
+    <button class="btn" id="unlock" data-next disabled>Unlock My Royal Surprise 👑</button>
+  </div>
+</section>
+
+<!-- 6 GIFT -->
+<section class="screen" id="s6" data-theme="pink">
+  <div class="wrap">
+    <h2 class="plum">Your Princess Day Gift Is Here! 🎁</h2>
+    <p class="hint">Ready to discover your little surprise?</p>
+    <div style="position:relative;width:260px;height:190px;display:flex;justify-content:center;align-items:flex-end">
+      <div class="balloon" style="left:6px;top:20px;background:#ff8cb8"></div>
+      <div class="balloon" style="left:48px;top:62px;background:#a99bff;animation-delay:.6s"></div>
+      <div class="balloon" style="right:6px;top:10px;background:#ffd36b;animation-delay:1s"></div>
+      <div class="balloon" style="right:50px;top:54px;background:#ff9ccb;animation-delay:1.6s"></div>
+      <div class="gift" id="gift"><div class="box"></div><div class="rib"></div><div class="lid"></div><div class="bow">🎀</div><div class="heart">💗</div></div>
+    </div>
+    <button class="btn" id="unwrap">Unwrap Your Gift 💗</button>
+  </div>
+</section>
+
+<!-- 7 GIFT LIST -->
+<section class="screen" id="s7" data-theme="pink">
+  <div class="wrap">
+    <h2 class="plum">Your Princess Day Gift Is Here! 🎁</h2>
+    <div class="row"><div class="ic">🫂</div><div><b>A Virtual Hug</b><span>Imagine the warmest hug, just for you.</span></div></div>
+    <div class="row"><div class="ic">🌹</div><div><b>A Bouquet of Roses</b><span>One rose for every little reason you make life more beautiful.</span></div></div>
+    <div class="row"><div class="ic">🛡️</div><div><b>A Royal Promise</b><span>I'll always try to treat your feelings with care and respect.</span></div></div>
+    <div class="note"><b>A Little Note for You 💌</b>Happy Princess Day! I hope today feels as lovely as you make my ordinary days feel. You deserve every bit of this magic.</div>
+    <button class="btn" data-next>One Last Thing, Princess... 💗</button>
+  </div>
+</section>
+
+<!-- 8 PROMISE -->
+<section class="screen" id="s8" data-theme="deep">
+  <div class="wrap">
+    <svg width="230" height="110" viewBox="0 0 230 110" aria-hidden="true">
+      <rect x="0" y="86" width="230" height="8" fill="#6a4bc0"/>
+      <g fill="#6a4bc0"><rect x="10" y="62" width="4" height="24"/><rect x="40" y="62" width="4" height="24"/><rect x="186" y="62" width="4" height="24"/><rect x="216" y="62" width="4" height="24"/></g>
+      <polygon points="82,86 96,50 110,86" fill="#ff8fc9"/><circle cx="96" cy="42" r="9" fill="#ffd9c4"/><path d="M87 40a9 9 0 0 1 18 0v-3a9 9 0 0 0-18 0z" fill="#5a2a1e"/>
+      <rect x="124" y="48" width="22" height="38" rx="4" fill="#7b8cff"/><circle cx="135" cy="40" r="9" fill="#ffd9c4"/><path d="M126 38a9 9 0 0 1 18 0v-3a9 9 0 0 0-18 0z" fill="#3a2418"/>
+      <circle cx="160" cy="24" r="10" fill="#f2e9ff" opacity=".9"/>
+    </svg>
+    <h1>My Promise to You, Princess <span data-her>Madaam Sahaibaa</span> 👑</h1>
+    <div class="glass">I can't promise that every day will be perfect, but I can promise to keep learning how to care for you better. I'll celebrate your happiness, respect your feelings, cheer for your dreams, and remind you that you never have to be perfect to be precious.<br><br>You don't need a crown to be a princess. You already deserve to be treated with kindness, respect, and genuine love.</div>
+    <div class="prom" id="prom">
+      <button class="p"><span class="n">1</span>I'll Cheer for Your Dreams</button>
+      <button class="p"><span class="n">2</span>I'll Respect Your Feelings</button>
+      <button class="p"><span class="n">3</span>I'll Celebrate the Real You</button>
+    </div>
+    <button class="btn" id="finalBtn" data-next disabled>Open Your Final Surprise 👑</button>
+  </div>
+</section>
+
+<!-- 9 HAPPY PRINCESS DAY MESSAGE -->
+<section class="screen" id="s9" data-theme="deep">
+  <div class="wrap">
+    <svg width="260" height="190" viewBox="0 0 260 190" aria-hidden="true">
+      <ellipse cx="130" cy="172" rx="105" ry="13" fill="#7a4fd6" opacity=".65"/>
+      <g stroke="#e6d9ff" stroke-width="1.2" opacity=".8"><line x1="100" y1="2" x2="128" y2="30"/><line x1="160" y1="2" x2="132" y2="30"/></g>
+      <g fill="#e6d9ff"><circle cx="100" cy="2" r="2.5"/><circle cx="160" cy="2" r="2.5"/></g>
+      <g fill="#f6c3e2"><rect x="52" y="78" width="30" height="78"/><rect x="178" y="78" width="30" height="78"/><rect x="104" y="50" width="52" height="106"/><rect x="82" y="86" width="22" height="70"/><rect x="156" y="86" width="22" height="70"/></g>
+      <g fill="#8d6cf0"><polygon points="46,80 67,42 88,80"/><polygon points="172,80 193,42 214,80"/><polygon points="98,52 130,10 162,52"/><polygon points="26,112 40,86 54,112"/><polygon points="206,112 220,86 234,112"/></g>
+      <g fill="#ffd36b" opacity=".85"><rect x="124" y="60" width="12" height="14" rx="2"/><rect x="60" y="100" width="12" height="14" rx="2"/><rect x="188" y="100" width="12" height="14" rx="2"/></g>
+      <polygon points="127,10 127,0 141,5 127,9" fill="#ff7bb6"/>
+      <!-- princess -->
+      <polygon points="74,170 98,98 122,170" fill="#ff7bb6"/>
+      <rect x="88" y="96" width="20" height="6" fill="#ffb347"/>
+      <circle cx="98" cy="82" r="14" fill="#ffe2d1"/><path d="M84 84a14 14 0 0 1 28 0v26h-6V82h-16v28h-6z" fill="#4a2a2a"/>
+      <polygon points="89,68 93,60 98,67 103,60 107,68" fill="#ffd36b"/>
+      <!-- prince -->
+      <rect x="140" y="104" width="26" height="60" rx="5" fill="#6f7bf0"/>
+      <polygon points="146,104 160,164 166,164 152,104" fill="#ffb347" opacity=".9"/>
+      <circle cx="153" cy="88" r="14" fill="#ffe2d1"/><path d="M139 86a14 14 0 0 1 28 0v-4a14 14 0 0 0-28 0z" fill="#2a1a22"/>
+      <polygon points="144,74 148,66 153,73 158,66 162,74" fill="#ffd36b"/>
+      <rect x="146" y="164" width="9" height="6" fill="#222"/><rect x="158" y="164" width="9" height="6" fill="#222"/>
+    </svg>
+    <h1>Happy Princess Day, My Princess! 👑</h1>
+    <div class="glass" id="msgCard" style="transform:rotate(-1.5deg);font-size:.92rem;line-height:1.6">
+      <p style="margin-bottom:10px">Today, the world celebrates Princess Day, but I hope you remember something special: you don't need a fairytale to be extraordinary.</p>
+      <p style="margin-bottom:10px">You have your own magic, your own dreams, your own beautiful story. And I hope life gives you a million reasons to smile, endless courage to chase your dreams, and people who remind you how precious you are.</p>
+      <p style="margin-bottom:10px">So here's your little reminder, Princess...</p>
+      <p style="margin-bottom:10px">Keep shining. Keep dreaming. Keep being beautifully YOU.</p>
+      <p>Happy Princess Day — 18 November!</p>
+    </div>
+    <p class="sig" style="align-self:flex-end">With lots of love,<br>Syed Saqib Razaa 💌</p>
+    <button class="btn" data-next>Send a Royal Hug 🫂</button>
+  </div>
+</section>
+
+<!-- 10 FINAL -->
+<section class="screen final" id="s10" data-theme="deep">
+  <div class="wrap">
+    <svg width="190" height="200" viewBox="0 0 190 200" aria-hidden="true">
+      <ellipse cx="95" cy="186" rx="70" ry="9" fill="#9b6bff" opacity=".5"/>
+      <polygon points="40,184 62,100 84,184" fill="#ff8fc9"/><circle cx="62" cy="86" r="16" fill="#ffd9c4"/><path d="M46 84a16 16 0 0 1 32 0v-6a16 16 0 0 0-32 0z" fill="#5a2a1e"/>
+      <polygon points="50,68 55,56 62,66 69,56 74,68" fill="#ffd36b"/>
+      <rect x="92" y="100" width="42" height="84" rx="8" fill="#7b8cff"/><circle cx="113" cy="84" r="16" fill="#ffd9c4"/><path d="M97 82a16 16 0 0 1 32 0v-6a16 16 0 0 0-32 0z" fill="#3a2418"/>
+      <polygon points="101,66 106,54 113,64 120,54 125,66" fill="#ffd36b"/>
+      <text x="22" y="40" font-size="18">💗</text><text x="140" y="50" font-size="14">💗</text>
+    </svg>
+    <p class="msg">Royal Hug Delivered! You deserve all the happiness in the kingdom.</p>
+    <p class="sig">With lots of love,<br>Syed Saqib Razaa 💗</p>
+    <button class="btn ghost" id="back">Back to the kingdom 💗</button>
+  </div>
+</section>
+
+<script>
+const HER = "Madaam Sahaibaa";
+const HIM = "Syed Saqib Razaa";
+document.querySelectorAll('[data-her]').forEach(e => e.textContent = HER);
+
+const $ = (s,r=document) => r.querySelector(s);
+const screens = [...document.querySelectorAll('.screen')];
+let cur = 0;
+
+/* background sky */
+const sky = $('#sky');
+for (let i=0;i<40;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*70+'%';s.style.animationDelay=Math.random()*3+'s';sky.appendChild(s)}
+function floaty(){
+  const f=document.createElement('div');f.className='fl';
+  f.textContent=['💗','✨','🌸','💖','·'][Math.floor(Math.random()*5)];
+  f.style.left=Math.random()*100+'%';f.style.fontSize=(10+Math.random()*14)+'px';
+  const d=7+Math.random()*6;f.style.animationDuration=d+'s';sky.appendChild(f);setTimeout(()=>f.remove(),d*1000);
+}
+setInterval(floaty,900);
+
+function go(i){
+  screens[cur].classList.remove('active');
+  cur=i;const s=screens[cur];s.classList.add('active');s.scrollTop=0;
+  document.body.className=s.dataset.theme;
+  if(i===3) startLetter();
+  if(i===8||i===9) burst();
+}
+document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>go(cur+1)));
+
+/* 1 envelope */
+const env=$('#env');
+function openEnv(){ if(env.classList.contains('open'))return; env.classList.add('open'); setTimeout(()=>go(1),900); }
+env.addEventListener('click',openEnv);
+env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')openEnv()});
+
+/* 4 letter typing */
+const letter=[
+ "Dear Princess "+HER+",",
+ "Maybe I can't give you a real castle, a thousand diamonds, or a crown made of gold. But I hope I can give you something even more precious: genuine care, countless reasons to smile, someone who listens to you, and little moments that make you feel special.",
+ "You deserve kindness on your difficult days, happiness in your ordinary moments, and love that never makes you feel like you have to be someone else.",
+ "Today is Princess Day, but honestly, you deserve to feel special every single day."
+];
+let typer=null, typed=false;
+const paper=$('#paper');
+function renderFull(){paper.innerHTML=letter.map(p=>'<p>'+p+'</p>').join('');finish()}
+function finish(){clearInterval(typer);typed=true;$('#moreBtn').style.display='';}
+function startLetter(){
+  if(typed) return;
+  const full=letter.join('\n');let i=0;
+  typer=setInterval(()=>{
+    i++;
+    const txt=full.slice(0,i).split('\n').map(p=>'<p>'+p+'</p>').join('');
+    paper.innerHTML=txt.replace(/<\/p>$/,'<span class="caret"></span></p>');
+    paper.parentElement.scrollIntoView({block:'nearest'});
+    if(i>=full.length){renderFull()}
+  },32);
+}
+$('#frame').addEventListener('click',()=>{if(!typed)renderFull()});
+
+/* 5 cards */
+const cards=[
+ ["Your Smile","☀️","It can make an ordinary day feel beautiful."],
+ ["Your Heart","💗","Your kindness is one of your prettiest qualities."],
+ ["Your Eyes","✨","They say so much without a single word."],
+ ["Your Personality","🎀","You're warm, real, and impossible to forget."],
+ ["Your Strength","💪","You handle hard days with quiet grace."],
+ ["Your Little Habits","🧸","Even the tiny things you do make me smile."]
+];
+const grid=$('#grid');let seen=0;
+cards.forEach((c,i)=>{
+  const t=document.createElement('div');t.className='tile';t.style.transform='rotate('+((i%3-1)*2)+'deg)';
+  t.innerHTML=`<div class="in"><div class="face front"><i>No. ${i+1} 👑</i><span style="font-size:1.1rem">${c[1]}</span><b>${c[0]}</b><small>tap to reveal ✨</small></div><div class="face back"><strong>${c[0].toUpperCase()}</strong><span>${c[2]}</span></div></div>`;
+  t.addEventListener('click',()=>{
+    if(t.classList.contains('flip'))return;t.classList.add('flip');seen++;
+    $('#count').textContent=seen+' of 6 royal secrets revealed';
+    if(seen===6){$('#unlock').disabled=false;$('#count').textContent='All 6 royal secrets revealed 👑'}
+  });
+  grid.appendChild(t);
+});
+
+/* 6 gift */
+const gift=$('#gift');
+$('#unwrap').addEventListener('click',()=>{
+  gift.classList.add('shake');
+  setTimeout(()=>{gift.classList.remove('shake');gift.classList.add('open');burst()},1000);
+  setTimeout(()=>go(6),2200);
+});
+gift.addEventListener('click',()=>$('#unwrap').click());
+
+/* 8 promises */
+let on=0;
+document.querySelectorAll('.p').forEach(p=>p.addEventListener('click',()=>{
+  if(p.classList.contains('on'))return;p.classList.add('on');on++;
+  if(on===3)$('#finalBtn').disabled=false;
+}));
+
+/* confetti */
+function burst(){
+  const em=['✨','💗','🌸','⭐','💖','🎉'];
+  for(let i=0;i<34;i++){
+    const f=document.createElement('div');f.textContent=em[i%em.length];
+    f.style.cssText=`position:fixed;left:50%;top:45%;font-size:${12+Math.random()*14}px;z-index:50;pointer-events:none;transition:transform 1.6s cubic-bezier(.2,.8,.3,1),opacity 1.6s`;
+    document.body.appendChild(f);
+    const a=Math.random()*Math.PI*2,r=80+Math.random()*180;
+    requestAnimationFrame(()=>{f.style.transform=`translate(${Math.cos(a)*r}px,${Math.sin(a)*r+60}px) rotate(${Math.random()*360}deg)`;f.style.opacity='0'});
+    setTimeout(()=>f.remove(),1700);
+  }
+}
+
+/* back to start */
+$('#back').addEventListener('click',()=>{
+  env.classList.remove('open');typed=false;seen=0;on=0;
+  document.querySelectorAll('.tile').forEach(t=>t.classList.remove('flip'));
+  document.querySelectorAll('.p').forEach(p=>p.classList.remove('on'));
+  $('#count').textContent='0 of 6 royal secrets revealed';
+  $('#unlock').disabled=true;$('#finalBtn').disabled=true;$('#moreBtn').style.display='none';
+  gift.classList.remove('open');paper.innerHTML='';
+  go(0);
+});
+</script>
+</body>
+</html>
